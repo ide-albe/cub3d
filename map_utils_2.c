@@ -331,7 +331,7 @@ void	print_map(t_map map)
 	int i = 0;
 	while (map.mat[i])
 	{
-		printf("%d: %s\n", i, map.mat[i]);
+		printf("%s\n", map.mat[i]);
 		i++;
 	}
 }
@@ -455,7 +455,7 @@ int first_wall(t_map map)
 	j = 0;
 	while (map.mat[i][j])
 	{
-		if (map.mat[i][j] != '1')
+		if (map.mat[i][j] != '1' && map.mat[i][j] != 32)
 			map_error();
 		j++;
 	}
@@ -469,7 +469,7 @@ int	is_all_ones(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != '1' || str[i] != ' ' || str[i] != '	')
+		if (str[i] != '1' && str[i] != 32 && str[i] != '	')
 			return (-1);
 		i++;
 	}
@@ -503,7 +503,7 @@ int	rest_walls(t_map map)
 	while (map.mat[i])
 	{
 		end = ft_strlen(map.mat[i]);
-		if (map.mat[i][0] == '\n')
+		if ((map.mat[i][0] == '\0'))
 			map_error();
 		if (map.mat[i][0] != '1' || map.mat[i][end - 1] != '1')
 			map_error();
