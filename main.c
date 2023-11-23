@@ -43,9 +43,14 @@ void	print_matz(char *argv)
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	// t_mat **_matriz = matriz(argv[1]);
+	// t_mat **_matriz;
 	t_map	map;
 	map = mat_to_arraid(argv[1]);
-	find_so(map);
+	map = set_and_clean(map);
+	first_wall(map);
+	rest_walls(map);
+	map = relocating_map(map);
+	print_map(map);
 	// system("leaks -q cub3d");
+
 }

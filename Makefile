@@ -12,11 +12,11 @@
 
 CC			= gcc -g
 NAME		= cub3d
-MLX_LIB     = MLX42/libmlx42.a
+# MLX_LIB     = MLX42/libmlx42.a
 LIBFTA		= libft/libft.a
 CFLAGS		= -Wall -Wextra -Werror
-LIBRARIES	= -lglfw -L "/Users/ide-albe/.brew/opt/glfw/lib" -lm -framework OpenGL
-SRC			= main.c map_utils_1.c map_utils_2.c
+# LIBRARIES	= -lglfw -L "/Users/ide-albe/.brew/opt/glfw/lib" -lm -framework OpenGL
+SRC			= main.c map_utils_1.c map_utils_2.c warnings.c
 OBJ			= $(SRC:.c=.o)
 
 all:		libft mlx $(NAME)
@@ -24,12 +24,15 @@ all:		libft mlx $(NAME)
 %.o: %.c
 	$(CC) -c $(CFLAGS) -o $@ $<
 
+# //AÑADIR "mlx" AQUI ABAJO
 $(NAME):	mlx libft $(OBJ)
-			$(CC) $(CFLAGS) $(LIBRARIES) $(OBJ) $(LIBFTA) $(MLX_LIB) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJ) $(LIBFTA) -o $(NAME)
+# //AÑADIR $(LIBRARIES) $(MLX_LIB) AQUI ARRIBA
+
 libft:
 	make -C libft
-mlx:
-	make -C MLX42
+# mlx:
+# 	make -C MLX42
 clean:
 	rm -rf $(OBJ)
 	make -C libft clean

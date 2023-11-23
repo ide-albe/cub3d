@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft/libft.h"
-# include "MLX42/include/MLX42/MLX42.h"
+// # include "MLX42/include/MLX42/MLX42.h"
 # include <stdarg.h>
 # include <fcntl.h>
 
@@ -31,7 +31,7 @@ typedef struct s_cont
 
 typedef struct s_mat
 {
-	mlx_image_t	*img;
+	// mlx_image_t	*img;
 	char		xar;
 }	t_mat;
 
@@ -43,9 +43,9 @@ typedef struct s_map
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*nd;
-	int				*f_color;
-	int				*c_color;
+	char			*no;
+	int			*f_color;
+	int			*c_color;
 }	t_map;
 
 //MAP && MAT FUNCTIONS
@@ -59,12 +59,45 @@ t_map	mapdimesions(char *argv);
 void	ft_free_matz(t_mat **_matriz, int x);
 //PRINT MAT (DELETE THIS AT END
 void	print_matz(char *argv);
+void	print_map(t_map map);
 
+/////RANDOM FUNCTIONS TO CLASIFY LATER
+int	is_path(char c);
+int	is_str_num(char c);
 // void	mapisntvalid(void);
+int	find_str_in_str(char *str1, char *str2);
+
+//CHECKING MAT ARGS
 
 //FIND SO, WE, EA, ND, f_color, c_color
 t_map	mat_to_arraid(char *argv);
-void	find_so(t_map	map);
+t_map	find_so(t_map	map);
+t_map	find_we(t_map	map);
+t_map	find_ea(t_map	map);
+t_map	find_no(t_map	map);
+t_map	find_f(t_map	map);
+t_map	find_c(t_map	map);
+t_map	set_and_clean(t_map map);
+int *color_values(char *str);
+int	mod_uns_atoi(const char *str);
 
+///MAP TO MAT
+int	map_lines_count(t_map	map);
+t_mat	**map_to_mat(t_map map);
+
+//ERROR PRINTING
+void	map_error(void);
+void	wrong_value(void);
+void	wrong_format(void);
+void	args_notfound(void);
+void	color_notfound(void);
+void	check_empy_map(t_map	map);
+
+//MAP CHECK
+int	is_all_ones(char *str);
+int	found_s(char *str);
+int first_wall(t_map map);
+int	rest_walls(t_map map);
+t_map	relocating_map(t_map map);
 
 #endif
