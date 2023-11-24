@@ -43,7 +43,7 @@ void	check_map_errors(t_map map)
 	///HACER NUEVA FUNCION CHECK_EMPTY_MAP
 	// check_empty_map(map);
 	first_wall(map);
-	check_active_player(map);
+	// check_active_player(map);
 	rest_walls(map);
 	checking_after_map(map);
 }
@@ -51,15 +51,15 @@ void	check_map_errors(t_map map)
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	t_mat **_matriz;
+	// t_mat **_matriz;
 	t_map	map;
 	map = mat_to_arraid(argv[1]);
 	map = set_and_clean(map);
 	check_map_errors(map);
 	map = relocating_map(map);
 	///MAP TO MAT FUNCIONA AVECES
-	_matriz = map_to_mat(map);
-	(void)_matriz;
+	// _matriz = map_to_mat(map);
+	// (void)_matriz;
 	// system("leaks -q cub3d");
 
 }

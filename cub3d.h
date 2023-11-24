@@ -67,6 +67,7 @@ int	is_str_num(char c);
 // void	mapisntvalid(void);
 int	find_str_in_str(char *str1, char *str2);
 int	iscaracter(int c);
+int	mod_strncmp(char *str, char *word, int start);
 
 //CHECKING MAT ARGS
 
@@ -105,6 +106,7 @@ t_map	relocating_map(t_map map);
 void	check_active_player(t_map map);
 void	check_map_errors(t_map map);
 void	checking_after_map(t_map map);
+void	textures_check(char *str);
 
 
 #endif

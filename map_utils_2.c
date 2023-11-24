@@ -60,14 +60,14 @@ t_map	set_and_clean(t_map map)
 	map = find_no(map);
 	map = find_f(map);
 	map = find_c(map);
-	map.so = ft_strtrim(map.so, " ");
-	map.we = ft_strtrim(map.we, " ");
-	map.ea = ft_strtrim(map.ea, " ");
-	map.no = ft_strtrim(map.no, " ");
-	// printf("map.so: %s\n", map.so);
-	// printf("map.we: %s\n", map.we);
-	// printf("map.ea: %s\n", map.ea);
-	// printf("map.no: %s\n", map.no);
+	textures_check(map.so);
+	textures_check(map.we);
+	textures_check(map.ea);
+	textures_check(map.no);
+	printf("map.so: %s\n", map.so);
+	printf("map.we: %s\n", map.we);
+	printf("map.ea: %s\n", map.ea);
+	printf("map.no: %s\n", map.no);
 	// printf("map.f_color: %d\n", map.f_color[0]);
 	// printf("map.f_color: %d\n", map.f_color[1]);
 	// printf("map.f_color: %d\n", map.f_color[2]);
@@ -75,6 +75,34 @@ t_map	set_and_clean(t_map map)
 	// printf("map.c_color: %d\n", map.c_color[1]);
 	// printf("map.c_color: %d\n", map.c_color[2]);
 	return (map);
+}
+
+int	mod_strncmp(char *str, char *word, int start)
+{
+	int i;
+
+	i = 0;
+	while (word[i])
+	{
+		if (str[start] != word[i])
+			return (-1);
+		start++;
+		i++;
+	}
+	return (0);
+}
+
+void	textures_check(char *str)
+{
+	int i;
+
+	str = ft_strtrim(str, " ");
+	i = ft_strlen(str) - 4;
+	if ((mod_strncmp(str, ".png", i) == -1))
+	{
+		printf("wrong format\n");
+		exit (EXIT_FAILURE);
+	}
 }
 
 int	map_lines_count(t_map	map)
@@ -253,6 +281,8 @@ t_map	relocating_map(t_map map)
 	return (relocated_map);
 }
 
+
+/////CHECK IF THIS "S" IS FOR PLAYER START LOCATION!
 void	check_active_player(t_map map)
 {
 	int i;
