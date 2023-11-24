@@ -41,3 +41,15 @@ void	wrong_format(void)
 	printf("Wrong format! Try without spaces between!\n");
 	exit(EXIT_FAILURE);
 }
+
+void multiple_players_found(void)
+{
+	printf("Multiple players found!\n");
+	exit (EXIT_FAILURE);
+}
+
+void player_not_found(void)
+{
+	printf("Player not found!\n");
+	exit (EXIT_FAILURE);
+}

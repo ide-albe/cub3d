@@ -16,7 +16,7 @@ NAME		= cub3d
 LIBFTA		= libft/libft.a
 CFLAGS		= -Wall -Wextra -Werror
 # LIBRARIES	= -lglfw -L "/Users/ide-albe/.brew/opt/glfw/lib" -lm -framework OpenGL
-SRC			= main.c map_utils_1.c map_utils_2.c warnings.c
+SRC			= main.c map_utils_1.c map_utils_2.c warnings.c utils.c
 OBJ			= $(SRC:.c=.o)
 
 all:		libft mlx $(NAME)

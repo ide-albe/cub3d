@@ -38,7 +38,13 @@ void	print_matz(char *argv)
 }
 //////////////////////////////////////////////////////////////////////////////////
 
-
+void	check_map_errors(t_map map)
+{
+	check_empty_map(map);
+	first_wall(map);
+	check_active_player(map);
+	rest_walls(map);
+}
 
 int	main(int argc, char **argv)
 {
@@ -47,9 +53,8 @@ int	main(int argc, char **argv)
 	t_map	map;
 	map = mat_to_arraid(argv[1]);
 	map = set_and_clean(map);
-	first_wall(map);
-	rest_walls(map);
-	map = relocating_map(map);
+	check_map_errors(map);
+	// map = relocating_map(map);
 	print_map(map);
 	// system("leaks -q cub3d");
 

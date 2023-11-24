@@ -12,25 +12,6 @@
 
 #include "cub3d.h"
 
-int	is_path(char c)
-{
-	if ((c == ',') || (c >= 'a' && c <= 'z')
-		|| (c >= 0 && c <= 9)
-		|| (c >= 'A' && c <= 'Z')
-		|| (c == '.' || c == '/'))
-			return (1);
-	return (0);
-}
-
-int	is_str_num(char c)
-{
-	if (c == ',' || (c >= '0' && c <= '9'))
-	{
-		return (1);
-	}
-	return (0);
-}
-
 t_map	mat_to_arraid(char *argv)
 {
 	int		i;
@@ -57,33 +38,6 @@ t_map	mat_to_arraid(char *argv)
 	}
 	map.mat[i] = NULL;
 	return (map);
-}
-
-int	find_str_in_str(char *str1, char *str2)
-{
-	int i;
-	int j;
-	int x;
-	
-	i = 0;
-	j = 0;
-	x = 0;
-	while (str1[i])
-	{
-		if (str1[i] == str2[x])
-		{
-			j = i;
-			while (str1[i] == str2[x])
-			{
-				x++;
-				j++;
-				i++;
-			}
-			return (j);
-		}
-		i++;
-	}
-	return (0);
 }
 
 t_map	find_so(t_map	map)
@@ -279,31 +233,6 @@ t_map	find_c(t_map	map)
 	return (map);
 }
 
-int	mod_uns_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	int	num;
-
-	num = 0;
-	sign = 1;
-	i = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
-		i++;
-	if ((str[i] == '-') || (str[i] == '+'))
-	{
-		if (str[i] == '-')
-			wrong_value();
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = (num * 10) + str[i] - '0';
-		i++;
-	}
-	return (num * sign);
-}
-
 int *color_values(char *str)
 {
 	int 	i;
@@ -336,7 +265,7 @@ void	print_map(t_map map)
 	}
 }
 
-void	check_empy_map(t_map	map)
+void	check_empty_map(t_map	map)
 {
 	int i;
 	int x;
@@ -357,15 +286,12 @@ void	check_empy_map(t_map	map)
 
 t_map	set_and_clean(t_map map)
 {
-	//CHECK EMPTY MAP NO FUNCIONA BIEN
-	// check_empy_map(map);
 	map = find_so(map);
 	map = find_we(map);
 	map = find_ea(map);
 	map = find_no(map);
 	map = find_f(map);
 	map = find_c(map);
-	// print_map(map);
 	map.so = ft_strtrim(map.so, " ");
 	map.we = ft_strtrim(map.we, " ");
 	map.ea = ft_strtrim(map.ea, " ");
@@ -492,10 +418,6 @@ int	found_s(char *str)
 
 int	rest_walls(t_map map)
 {
-	///CHECKS ALL WALLS AND RETURNS POS OF LAST ONE
-	///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	///CHECKEAR MAPAS CON PRIMERAS PAREDES CON ESPACIOS Y ARREGLARLO
-	///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	int i;
 	int end;
 
@@ -535,4 +457,31 @@ t_map	relocating_map(t_map map)
 		start++;
 	}
 	return (relocated_map);
+}
+
+void	check_active_player(t_map map)
+{
+	int i;
+	int j;
+	int start;
+	int end;
+
+	i = 0;
+	start = first_wall(map);
+	end = rest_walls(map);
+	while (map.mat[start] && start <= end)
+	{
+		j = 0;
+		while (map.mat[start][j])
+		{
+			if (map.mat[start][j] == 'S')
+				i++;
+			j++;
+		}
+		start++;
+	}
+	if (i == 0)
+		player_not_found();
+	if (i != 1)
+		multiple_players_found();
 }

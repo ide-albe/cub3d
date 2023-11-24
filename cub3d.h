@@ -91,7 +91,9 @@ void	wrong_value(void);
 void	wrong_format(void);
 void	args_notfound(void);
 void	color_notfound(void);
-void	check_empy_map(t_map	map);
+void	check_empty_map(t_map	map);
+void player_not_found(void);
+void multiple_players_found(void);
 
 //MAP CHECK
 int	is_all_ones(char *str);
@@ -99,5 +101,8 @@ int	found_s(char *str);
 int first_wall(t_map map);
 int	rest_walls(t_map map);
 t_map	relocating_map(t_map map);
+void	check_active_player(t_map map);
+void	check_map_errors(t_map map);
+
 
 #endif
