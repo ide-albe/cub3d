@@ -40,220 +40,7 @@ t_map	mat_to_arraid(char *argv)
 	return (map);
 }
 
-t_map	find_so(t_map	map)
-{
-	int i;
-	int x;
-	int j;
 
-	i = 0;
-	while (map.mat[i])
-	{
-		x = find_str_in_str(map.mat[i], "SO");
-		if (x > 0)
-		{
-			x += 1;
-			j = x;
-			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-				j++;
-			while ((is_path(map.mat[i][j]) == 1))
-				j++;
-			map.so = ft_substr(map.mat[i], x, j);
-			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
-			break ;
-		}
-		i++;
-	}
-	if (x == 0)
-		args_notfound();
-	return (map);
-}
-
-t_map	find_we(t_map	map)
-{
-	int i;
-	int x;
-	int j;
-
-	i = 0;
-	while (map.mat[i])
-	{
-		x = find_str_in_str(map.mat[i], "WE");
-		if (x > 0)
-		{
-			x += 1;
-			j = x;
-			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-				j++;
-			while ((is_path(map.mat[i][j]) == 1))
-				j++;
-			map.we = ft_substr(map.mat[i], x, j);
-			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
-			break ;
-		}
-		i++;
-	}
-	if (x == 0)
-		args_notfound();
-	return (map);
-}
-
-t_map	find_ea(t_map	map)
-{
-	int i;
-	int x;
-	int j;
-
-	i = 0;
-	while (map.mat[i])
-	{
-		x = find_str_in_str(map.mat[i], "EA");
-		if (x > 0)
-		{
-			x += 1;
-			j = x;
-			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-				j++;
-			while ((is_path(map.mat[i][j]) == 1))
-				j++;
-			map.ea = ft_substr(map.mat[i], x, j);
-			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
-			break ;
-		}
-		i++;
-	}
-	if (x == 0)
-		args_notfound();
-	return (map);
-}
-
-t_map	find_no(t_map	map)
-{
-	int i;
-	int x;
-	int j;
-
-	i = 0;
-	while (map.mat[i])
-	{
-		x = find_str_in_str(map.mat[i], "NO");
-		if (x > 0)
-		{
-			x += 1;
-			j = x;
-			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-				j++;
-			while ((is_path(map.mat[i][j]) == 1))
-				j++;
-			map.no = ft_substr(map.mat[i], x, j);
-			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
-			break ;
-		}
-		i++;
-	}
-	if (x == 0)
-		args_notfound();
-	return (map);
-}
-
-t_map	find_f(t_map	map)
-{
-	int i;
-	int x;
-	int j;
-	char	*f_c;
-
-	i = 0;
-	while (map.mat[i])
-	{
-		x = find_str_in_str(map.mat[i], "F");
-		if (x > 0)
-		{
-			x += 1;
-			j = x;
-			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-				j++;
-			j++;
-			while ((is_str_num(map.mat[i][j]) == 1))
-			{
-				j++;
-				if (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-					wrong_format();
-			}
-			f_c = ft_substr(map.mat[i], x, j);
-			map.f_color = color_values(f_c);
-			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
-			break ;
-		}
-		i++;
-	}
-	if (x == 0)
-		color_notfound();
-	return (map);
-}
-
-t_map	find_c(t_map	map)
-{
-	int i;
-	int x;
-	int j;
-	char	*f_c;
-
-	i = 0;
-	while (map.mat[i])
-	{
-		x = find_str_in_str(map.mat[i], "C");
-		if (x > 0)
-		{
-			x += 1;
-			j = x;
-			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-				j++;
-			while ((is_str_num(map.mat[i][j]) == 1))
-			{
-				j++;
-				if (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
-					wrong_format();
-			}
-			f_c = ft_substr(map.mat[i], x, j);
-			map.c_color = color_values(f_c);
-			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
-			break ;
-		}
-		i++;
-	}
-	if (x == 0)
-		color_notfound();
-	return (map);
-}
-
-int *color_values(char *str)
-{
-	int 	i;
-	int		*_color;
-	char 	**nums;
-
-	i = 0;
-	nums = ft_split(str, ',');
-	_color = (int *)malloc(4 * sizeof(int));
-	while (nums[i])
-	{
-
-		_color[i] = mod_uns_atoi(nums[i]);
-		if (i >= 3)
-			wrong_value();
-		i++;
-	}
-	if (i <= 2)
-		wrong_value();
-	return (_color);
-}
 
 void	print_map(t_map map)
 {
@@ -263,25 +50,6 @@ void	print_map(t_map map)
 		printf("%s\n", map.mat[i]);
 		i++;
 	}
-}
-
-void	check_empty_map(t_map	map)
-{
-	int i;
-	int x;
-
-	i = 0;
-	if (map.mat[0] == NULL)
-		map_error();
-	while (map.mat[i])
-	{
-		x = ft_strlen(map.mat[i]);
-		if (map.mat[i + 1] == NULL)
-			if (x < 1)
-				map_error();
-		i++;
-	}
-	(void)map;
 }
 
 t_map	set_and_clean(t_map map)
@@ -316,6 +84,7 @@ int	map_lines_count(t_map	map)
 	int	j;
 
 	i = 0;
+	j = 0;
 	while (map.mat[i])
 	{
 		x = ft_strlen(map.mat[i]);
@@ -326,9 +95,6 @@ int	map_lines_count(t_map	map)
 	return (j);
 }
 
-
-///ESTA FUNCION TENDRIA QUE ARREGLARLA DESPUES DE CHECKEAR YA SI EL MAPA ES VALIDO
-//POR AHORA LA DEJO ASI, Y TENDRE Q ADAPTARLA A LO Q ME DEVUELVA map.mat
 t_mat	**map_to_mat(t_map map)
 {
 	int		i;
@@ -339,7 +105,7 @@ t_mat	**map_to_mat(t_map map)
 
 	i = 0;
 	x = 0;
-	_matz = (t_mat **)malloc((map_lines_count(map) + 1) * sizeof(t_mat *));
+	_matz = (t_mat **)malloc((map_lines_count(map) + 2) * sizeof(t_mat *));
 	while (map.mat[i])
 	{
 		z = 0;
@@ -348,7 +114,7 @@ t_mat	**map_to_mat(t_map map)
 		{ 
 			while (map.mat[i][z])
 			{
-				_matz[x] = malloc((ft_strlen(map.mat[i] + 1)) * sizeof(char));
+				_matz[x] = malloc((ft_strlen(map.mat[i] + 2)) * sizeof(char));
 				_matz[x][z].xar = map.mat[i][z];
 				printf("%c", _matz[x][z].xar);
 				z++;
@@ -434,6 +200,34 @@ int	rest_walls(t_map map)
 		i++;
 	}
 	return (i);
+}
+
+int	iscaracter(int c)
+{
+	if ((c >= 33 && c < 256))
+	{
+		return (1);
+	}		
+	return (0);
+}
+///////////////////CHECKEANDO QUE EL FINAL DEL MAPA ESTE VACIO
+void	checking_after_map(t_map map)
+{
+	int	i;
+	int	j;
+
+	i = rest_walls(map) + 1;
+	while (map.mat[i])
+	{
+		j = 0;
+		while(map.mat[i][j])
+		{
+			if ((iscaracter(map.mat[i][j]) == 1))
+				map_error();
+			j++;
+		}
+		i++;
+	}
 }
 
 t_map	relocating_map(t_map map)

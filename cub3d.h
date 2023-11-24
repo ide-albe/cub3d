@@ -66,6 +66,7 @@ int	is_path(char c);
 int	is_str_num(char c);
 // void	mapisntvalid(void);
 int	find_str_in_str(char *str1, char *str2);
+int	iscaracter(int c);
 
 //CHECKING MAT ARGS
 
@@ -91,7 +92,7 @@ void	wrong_value(void);
 void	wrong_format(void);
 void	args_notfound(void);
 void	color_notfound(void);
-void	check_empty_map(t_map	map);
+// void	check_empty_map(t_map	map);
 void player_not_found(void);
 void multiple_players_found(void);
 
@@ -103,6 +104,7 @@ int	rest_walls(t_map map);
 t_map	relocating_map(t_map map);
 void	check_active_player(t_map map);
 void	check_map_errors(t_map map);
+void	checking_after_map(t_map map);
 
 
 #endif
