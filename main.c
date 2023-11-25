@@ -51,15 +51,21 @@ void	check_map_errors(t_map map)
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	// t_mat **_matriz;
+	t_mat **_matriz;
 	t_map	map;
-	map = mat_to_arraid(argv[1]);
-	map = set_and_clean(map);
-	check_map_errors(map);
-	map = relocating_map(map);
-	///MAP TO MAT FUNCIONA AVECES
-	// _matriz = map_to_mat(map);
-	// (void)_matriz;
-	// system("leaks -q cub3d");
+	if (argc == 2)
+	{
+		format_check(argv[1]);
+		map = mat_to_arraid(argv[1]);
+		map = set_and_clean(map);
+		check_map_errors(map);
+		map = relocating_map(map);
+		///MAP TO MAT FUNCIONA AVECES
+		_matriz = map_to_mat(map);
+		(void)_matriz;
+		// (void)_matriz;
+		// system("leaks -q cub3d");
+
+	}
 
 }

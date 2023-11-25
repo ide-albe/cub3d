@@ -60,14 +60,14 @@ t_map	set_and_clean(t_map map)
 	map = find_no(map);
 	map = find_f(map);
 	map = find_c(map);
-	textures_check(map.so);
-	textures_check(map.we);
-	textures_check(map.ea);
-	textures_check(map.no);
-	printf("map.so: %s\n", map.so);
-	printf("map.we: %s\n", map.we);
-	printf("map.ea: %s\n", map.ea);
-	printf("map.no: %s\n", map.no);
+	format_check(map.so);
+	format_check(map.we);
+	format_check(map.ea);
+	format_check(map.no);
+	// printf("map.so: %s\n", map.so);
+	// printf("map.we: %s\n", map.we);
+	// printf("map.ea: %s\n", map.ea);
+	// printf("map.no: %s\n", map.no);
 	// printf("map.f_color: %d\n", map.f_color[0]);
 	// printf("map.f_color: %d\n", map.f_color[1]);
 	// printf("map.f_color: %d\n", map.f_color[2]);
@@ -92,13 +92,13 @@ int	mod_strncmp(char *str, char *word, int start)
 	return (0);
 }
 
-void	textures_check(char *str)
+void	format_check(char *str)
 {
 	int i;
 
 	str = ft_strtrim(str, " ");
 	i = ft_strlen(str) - 4;
-	if ((mod_strncmp(str, ".png", i) == -1))
+	if ((mod_strncmp(str, ".png", i) == -1) && (mod_strncmp(str, ".cub", i) == -1))
 	{
 		printf("wrong format\n");
 		exit (EXIT_FAILURE);
@@ -221,8 +221,9 @@ int	rest_walls(t_map map)
 		end = ft_strlen(map.mat[i]);
 		if ((map.mat[i][0] == '\0'))
 			map_error();
-		if (map.mat[i][0] != '1' || map.mat[i][end - 1] != '1')
+		if (map.mat[i][0] != '1' && map.mat[i][end - 1] != '1')
 			map_error();
+		(void)end;
 		if ((is_all_ones(map.mat[i]) == 1))
 			break ;
 		i++;
