@@ -61,10 +61,10 @@ t_map	set_and_clean(t_map map)
 	map = find_f(map);
 	map = find_c(map);
 	// printf("map.so: %s\n", map.so);
-	format_check(map.so);
-	format_check(map.we);
-	format_check(map.ea);
-	format_check(map.no);
+	format_png_check(map.so);
+	format_png_check(map.we);
+	format_png_check(map.ea);
+	format_png_check(map.no);
 	// printf("map.so: %s\n", map.so);
 	// printf("map.we: %s\n", map.we);
 	// printf("map.ea: %s\n", map.ea);
@@ -93,15 +93,28 @@ int	mod_strncmp(char *str, char *word, int start)
 	return (0);
 }
 
-void	format_check(char *str)
+void	format_png_check(char *str)
 {
 	int i;
 
 	str = ft_strtrim(str, " ");
 	i = ft_strlen(str) - 4;
-	if ((mod_strncmp(str, ".png", i) == -1) && (mod_strncmp(str, ".cub", i) == -1))
+	if ((mod_strncmp(str, ".png", i) == -1))
 	{
-		printf("wrong format\n");
+		printf(".png not found!!\n");
+		exit (EXIT_FAILURE);
+	}
+}
+
+void	format_cub_check(char *str)
+{
+	int i;
+
+	str = ft_strtrim(str, " ");
+	i = ft_strlen(str) - 4;
+	if ((mod_strncmp(str, ".cub", i) == -1))
+	{
+		printf("wrong filetype!\n");
 		exit (EXIT_FAILURE);
 	}
 }
@@ -145,8 +158,10 @@ t_mat	**map_to_mat(t_map map)
 			{
 				_matz[x] = malloc((ft_strlen(map.mat[i] + 2)) * sizeof(char));
 				_matz[x][z].xar = map.mat[i][z];
+				printf("%c", _matz[x][z].xar);
 				z++;
 			}
+			printf("\n");
 			_matz[x][z].xar = '\0';
 		}
 		x++;
@@ -163,7 +178,7 @@ int first_wall(t_map map)
 	int j;
 	
 	i = 0;
-	while (map.mat[i][0] == '\n')
+	while (map.mat[i][0] == '\n' || map.mat[i][0] == '\0')
 		i++;
 	j = 0;
 	if (i < 6)
@@ -218,9 +233,9 @@ int	rest_walls(t_map map)
 			map_error();
 		if (map.mat[i][0] != '1' && map.mat[i][end - 1] != '1')
 			map_error();
-		(void)end;
 		if ((is_all_ones(map.mat[i]) == 1))
-			break ;
+			if (map.mat[i + 1] == NULL || map.mat[i + 1][0] == '\0')
+				break ;
 		i++;
 	}
 	return (i);
@@ -241,6 +256,7 @@ void	checking_after_map(t_map map)
 	int	j;
 
 	i = rest_walls(map) + 1;
+	printf("last:%s\n", map.mat[i]);
 	while (map.mat[i])
 	{
 		j = 0;

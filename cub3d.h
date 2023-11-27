@@ -106,7 +106,8 @@ t_map	relocating_map(t_map map);
 void	check_active_player(t_map map);
 void	check_map_errors(t_map map);
 void	checking_after_map(t_map map);
-void	format_check(char *str);
+void	format_cub_check(char *str);
+void	format_png_check(char *str);
 
 
 #endif

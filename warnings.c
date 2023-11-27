@@ -26,7 +26,7 @@ void	args_notfound(void)
 
 void	color_notfound(void)
 {
-	printf("F or C not founf!\n");
+	printf("F or C not found!\n");
 	exit(EXIT_FAILURE);
 }
 

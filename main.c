@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 	t_map	map;
 	if (argc == 2)
 	{
-		// format_check(argv[1]);
+		// format_cub_check(argv[1]);
 		map = mat_to_map(argv[1]);
 		map = set_and_clean(map);
 		check_map_errors(map);
