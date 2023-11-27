@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-t_map	mat_to_arraid(char *argv)
+t_map	mat_to_map(char *argv)
 {
 	int		i;
 	int		j;
@@ -60,6 +60,7 @@ t_map	set_and_clean(t_map map)
 	map = find_no(map);
 	map = find_f(map);
 	map = find_c(map);
+	// printf("map.so: %s\n", map.so);
 	format_check(map.so);
 	format_check(map.we);
 	format_check(map.ea);
@@ -144,11 +145,9 @@ t_mat	**map_to_mat(t_map map)
 			{
 				_matz[x] = malloc((ft_strlen(map.mat[i] + 2)) * sizeof(char));
 				_matz[x][z].xar = map.mat[i][z];
-				printf("%c", _matz[x][z].xar);
 				z++;
 			}
 			_matz[x][z].xar = '\0';
-			printf("\n");
 		}
 		x++;
 		i++;
@@ -161,18 +160,14 @@ int first_wall(t_map map)
 {
 	///CHECKS FIRST WALLS IS ALL ONEs, AND RETURN A INT WHERE TO FIND THIS WALL IN THE MAT
 	int i;
-	int x;
 	int j;
 	
 	i = 0;
-	while (map.mat[i])
-	{
-		x = ft_strlen(map.mat[i]);
-		if (x > 0)
-			break ;
+	while (map.mat[i][0] == '\n')
 		i++;
-	}
 	j = 0;
+	if (i < 6)
+		map_error();
 	while (map.mat[i][j])
 	{
 		if (map.mat[i][j] != '1' && map.mat[i][j] != 32)
@@ -219,7 +214,7 @@ int	rest_walls(t_map map)
 	while (map.mat[i])
 	{
 		end = ft_strlen(map.mat[i]);
-		if ((map.mat[i][0] == '\0'))
+		if ((map.mat[i][0] == '\n'))
 			map_error();
 		if (map.mat[i][0] != '1' && map.mat[i][end - 1] != '1')
 			map_error();
@@ -279,6 +274,7 @@ t_map	relocating_map(t_map map)
 		i++;
 		start++;
 	}
+	relocated_map.mat[i] = NULL;
 	return (relocated_map);
 }
 

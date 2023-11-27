@@ -23,7 +23,7 @@ t_mat	**maplloc(char *argv)
 	_matriz = (t_mat **)malloc((map_size.height + 1) * sizeof(t_mat *));
 	while (i < map_size.height)
 	{
-		_matriz[i] = (t_mat *)malloc((map_size.width[i] + 1)* sizeof(t_mat));
+		_matriz[i] = (t_mat *)malloc((map_size.width[i] + 1) * sizeof(t_mat));
 		i++;
 	}
 	_matriz[i] = NULL;
@@ -62,7 +62,7 @@ int	maplines(char *argv)
 
 	i = 0;
 	fd = open(argv, O_RDONLY);
-	line = get_next_line(fd);
+	line = get_next_line(fd);  
 	while (line)
 	{
 		free(line);

@@ -55,8 +55,8 @@ int	main(int argc, char **argv)
 	t_map	map;
 	if (argc == 2)
 	{
-		format_check(argv[1]);
-		map = mat_to_arraid(argv[1]);
+		// format_check(argv[1]);
+		map = mat_to_map(argv[1]);
 		map = set_and_clean(map);
 		check_map_errors(map);
 		map = relocating_map(map);
@@ -67,5 +67,6 @@ int	main(int argc, char **argv)
 		// system("leaks -q cub3d");
 
 	}
-
+	else
+		printf("ARGS error. Try: './cub3d 'map.cub'\n");
 }

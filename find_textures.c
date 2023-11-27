@@ -20,7 +20,7 @@ t_map	find_so(t_map	map)
 				j++;
 			map.so = ft_substr(map.mat[i], x, j);
 			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
+			map.mat[i][0] = '\n';
 			break ;
 		}
 		i++;
@@ -50,7 +50,7 @@ t_map	find_we(t_map	map)
 				j++;
 			map.we = ft_substr(map.mat[i], x, j);
 			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
+			map.mat[i][0] = '\n';
 			break ;
 		}
 		i++;
@@ -80,7 +80,7 @@ t_map	find_ea(t_map	map)
 				j++;
 			map.ea = ft_substr(map.mat[i], x, j);
 			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
+			map.mat[i][0] = '\n';
 			break ;
 		}
 		i++;
@@ -110,7 +110,7 @@ t_map	find_no(t_map	map)
 				j++;
 			map.no = ft_substr(map.mat[i], x, j);
 			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
+			map.mat[i][0] = '\n';
 			break ;
 		}
 		i++;
@@ -147,7 +147,7 @@ t_map	find_f(t_map	map)
 			f_c = ft_substr(map.mat[i], x, j);
 			map.f_color = color_values(f_c);
 			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
+			map.mat[i][0] = '\n';
 			break ;
 		}
 		i++;
@@ -183,7 +183,7 @@ t_map	find_c(t_map	map)
 			f_c = ft_substr(map.mat[i], x, j);
 			map.c_color = color_values(f_c);
 			ft_bzero(map.mat[i], ft_strlen(map.mat[i]));
-			map.mat[i][0] = '\0';
+			map.mat[i][0] = '\n';
 			break ;
 		}
 		i++;

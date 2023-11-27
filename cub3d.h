@@ -72,7 +72,7 @@ int	mod_strncmp(char *str, char *word, int start);
 //CHECKING MAT ARGS
 
 //FIND SO, WE, EA, ND, f_color, c_color
-t_map	mat_to_arraid(char *argv);
+t_map	mat_to_map(char *argv);
 t_map	find_so(t_map	map);
 t_map	find_we(t_map	map);
 t_map	find_ea(t_map	map);
