@@ -20,7 +20,7 @@ void	map_error(void)
 
 void	args_notfound(void)
 {
-	printf("SO, WE, EA or NO not found!\n");
+	printf("Data in file missing!\n");
 	exit(EXIT_FAILURE);
 }
 

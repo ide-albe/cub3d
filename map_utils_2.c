@@ -61,20 +61,20 @@ t_map	set_and_clean(t_map map)
 	map = find_f(map);
 	map = find_c(map);
 	// printf("map.so: %s\n", map.so);
-	format_png_check(map.so);
-	format_png_check(map.we);
-	format_png_check(map.ea);
-	format_png_check(map.no);
-	// printf("map.so: %s\n", map.so);
-	// printf("map.we: %s\n", map.we);
-	// printf("map.ea: %s\n", map.ea);
-	// printf("map.no: %s\n", map.no);
-	// printf("map.f_color: %d\n", map.f_color[0]);
-	// printf("map.f_color: %d\n", map.f_color[1]);
-	// printf("map.f_color: %d\n", map.f_color[2]);
-	// printf("map.c_color: %d\n", map.c_color[0]);
-	// printf("map.c_color: %d\n", map.c_color[1]);
-	// printf("map.c_color: %d\n", map.c_color[2]);
+	// format_png_check(map.so);
+	// format_png_check(map.we);
+	// format_png_check(map.ea);
+	// format_png_check(map.no);
+	printf("map.so: %s\n", map.so);
+	printf("map.we: %s\n", map.we);
+	printf("map.ea: %s\n", map.ea);
+	printf("map.no: %s\n", map.no);
+	printf("map.f_color: %d\n", map.f_color[0]);
+	printf("map.f_color: %d\n", map.f_color[1]);
+	printf("map.f_color: %d\n", map.f_color[2]);
+	printf("map.c_color: %d\n", map.c_color[0]);
+	printf("map.c_color: %d\n", map.c_color[1]);
+	printf("map.c_color: %d\n", map.c_color[2]);
 	return (map);
 }
 
@@ -156,7 +156,7 @@ t_mat	**map_to_mat(t_map map)
 		{ 
 			while (map.mat[i][z])
 			{
-				_matz[x] = malloc((ft_strlen(map.mat[i] + 2)) * sizeof(char));
+				_matz[x] = malloc((k + 2) * sizeof(char));
 				_matz[x][z].xar = map.mat[i][z];
 				printf("%c", _matz[x][z].xar);
 				z++;
@@ -256,7 +256,6 @@ void	checking_after_map(t_map map)
 	int	j;
 
 	i = rest_walls(map) + 1;
-	printf("last:%s\n", map.mat[i]);
 	while (map.mat[i])
 	{
 		j = 0;

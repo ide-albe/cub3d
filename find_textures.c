@@ -9,10 +9,9 @@ t_map	find_so(t_map	map)
 	i = 0;
 	while (map.mat[i])
 	{
-		x = find_str_in_str(map.mat[i], "SO");
+		x = find_str_in_str(map.mat[i], "SO ");
 		if (x > 0)
 		{
-			x += 1;
 			j = x;
 			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
 				j++;
@@ -39,10 +38,9 @@ t_map	find_we(t_map	map)
 	i = 0;
 	while (map.mat[i])
 	{
-		x = find_str_in_str(map.mat[i], "WE");
+		x = find_str_in_str(map.mat[i], "WE ");
 		if (x > 0)
 		{
-			x += 1;
 			j = x;
 			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
 				j++;
@@ -69,10 +67,9 @@ t_map	find_ea(t_map	map)
 	i = 0;
 	while (map.mat[i])
 	{
-		x = find_str_in_str(map.mat[i], "EA");
+		x = find_str_in_str(map.mat[i], "EA ");
 		if (x > 0)
 		{
-			x += 1;
 			j = x;
 			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
 				j++;
@@ -99,10 +96,9 @@ t_map	find_no(t_map	map)
 	i = 0;
 	while (map.mat[i])
 	{
-		x = find_str_in_str(map.mat[i], "NO");
+		x = find_str_in_str(map.mat[i], "NO ");
 		if (x > 0)
 		{
-			x += 1;
 			j = x;
 			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
 				j++;
@@ -130,10 +126,9 @@ t_map	find_f(t_map	map)
 	i = 0;
 	while (map.mat[i])
 	{
-		x = find_str_in_str(map.mat[i], "F");
+		x = find_str_in_str(map.mat[i], "F ");
 		if (x > 0)
 		{
-			x += 1;
 			j = x;
 			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
 				j++;
@@ -167,10 +162,9 @@ t_map	find_c(t_map	map)
 	i = 0;
 	while (map.mat[i])
 	{
-		x = find_str_in_str(map.mat[i], "C");
+		x = find_str_in_str(map.mat[i], "C ");
 		if (x > 0)
 		{
-			x += 1;
 			j = x;
 			while (map.mat[i][j] == ' ' || map.mat[i][j] == '	')
 				j++;

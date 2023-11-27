@@ -63,8 +63,7 @@ int	main(int argc, char **argv)
 		///MAP TO MAT FUNCIONA AVECES
 		_matriz = map_to_mat(map);
 		(void)_matriz;
-		// (void)_matriz;
-		// system("leaks -q cub3d");
+		system("leaks -q cub3d");
 
 	}
 	else

@@ -62,7 +62,9 @@ int	maplines(char *argv)
 
 	i = 0;
 	fd = open(argv, O_RDONLY);
-	line = get_next_line(fd);  
+	line = get_next_line(fd);
+	if (line == NULL)
+		args_notfound();
 	while (line)
 	{
 		free(line);
